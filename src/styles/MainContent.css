@@ -1,0 +1,27 @@
+.main_section {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  /* justify-content: space-between; */
+}
+
+.logo {
+  position: absolute;
+  left: 10px;
+  top: 38px;
+}
+.logo img {
+  width: 80px;
+}
+
+.content {
+  margin: 150px 10px;
+}
+
+.main_section .main_content .banner {
+  width: 400px;
+  height: 385px;
+  position: absolute;
+  right: 0;
+  top: 38px;
+}

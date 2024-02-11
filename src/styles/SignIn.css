@@ -1,0 +1,82 @@
+.crossSymbol {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  cursor: pointer;
+}
+
+.heading {
+  margin: 20px 0;
+}
+
+.MainSignInBtn {
+  padding: 10px;
+  color: white;
+  background-color: #3fa3e0;
+  border: none;
+  border-radius: 5px;
+}
+
+.inputBox {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  position: relative;
+}
+
+.inputBox label {
+  font-weight: bold;
+}
+
+.inputBox input {
+  /* width: 80%; */
+  margin: 10px;
+  padding: 15px;
+  border: 1px solid black;
+  border-radius: 5px;
+}
+
+.forget {
+  position: absolute;
+  right: 20px;
+  color: #1595c0;
+}
+
+.checkBox {
+  text-align: center;
+}
+
+.signInBtn {
+  display: flex;
+  justify-content: center;
+}
+
+.signInBtn button {
+  width: 50%;
+  margin-top: 10px;
+  padding: 15px;
+  color: white;
+  background-color: #3fa3e0;
+  border: none;
+  border-radius: 10px;
+}
+
+/* .signUpBtn {
+  display: flex;
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+.signUpBtn span {
+  width: 50%;
+  padding: 15px;
+}
+
+.signUpBtn button {
+  width: 50%;
+  padding: 15px;
+  color: white;
+  background-color: #3fa3e0;
+  border: none;
+  border-radius: 10px;
+} */

@@ -1,0 +1,47 @@
+.navBar {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  margin: auto;
+}
+
+@media screen and (max-width: 900px) {
+  .navBar {
+    font-size: 12px;
+  }
+
+  .navLogo img {
+    width: 3rem;
+  }
+
+  .signInBtn button {
+    font-size: 12px;
+  }
+
+  .navPara {
+    font-size: 12px;
+  }
+}
+
+.navLogo img {
+  width: 10rem;
+}
+
+.navContainer nav ul {
+  display: flex;
+  align-items: center;
+  list-style: none;
+  height: 5rem;
+}
+
+.navContainer nav li {
+  margin-right: 1rem;
+  margin-left: 1rem;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.button-holder {
+  display: flex;
+  justify-content: space-between;
+  width: 15%;
+}
