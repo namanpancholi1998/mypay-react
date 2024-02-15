@@ -1,0 +1,13 @@
+.profileModal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 80vh;
+}
+
+.userName {
+  color: goldenrod;
+  font-weight: bold;
+  text-transform: uppercase;
+}

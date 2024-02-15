@@ -1,10 +1,8 @@
 import "../styles/SignIn.css";
-import { findByLabelText } from "@testing-library/react";
 import React from "react";
-import ReactDOM from "react-dom";
 import Modal from "react-modal";
-import { CookiesProvider, useCookies } from "react-cookie";
-import { useState } from "react";
+import { useCookies } from "react-cookie";
+// import { useState } from "react";
 
 const customStyles = {
   content: {
@@ -25,7 +23,6 @@ const customStyles = {
   },
 };
 
-
 const users = [
   {
     userName: "naman",
@@ -34,32 +31,32 @@ const users = [
   {
     userName: "admin",
     password: "admin",
-  }
+  },
 ];
-
-// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
 
 function SignIn() {
   const [cookies, setCookie] = useCookies(["token"]);
   // const [email, setEmail] = useState();
- 
+
   // function handelEmail (e) {
   //   setEmail(e.target.value);
   // }
 
   function handelLogIn(e) {
     e.preventDefault();
-    const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
-    const isLogedIn = users.filter(user => user.userName === email && user.password === password).length > 0;
-    if(isLogedIn){
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+    const isLogedIn =
+      users.filter(
+        (user) => user.userName === email && user.password === password
+      ).length > 0;
+
+    if (isLogedIn) {
       let tokenValue = `mypay-${email}-mypay`;
       setCookie("token", tokenValue, { path: "/" });
-    }else {
-      console.log('Password galt hai');
+    } else {
+      alert("Password galt hai");
     }
-    
-    // window.location.reload()
   }
 
   let subtitle;
@@ -88,7 +85,6 @@ function SignIn() {
         isOpen={modalIsOpen}
         onAfterOpen={afterOpenModal}
         ariaHideApp={false}
-        // onRequestClose={closeModal}
         style={customStyles}
         contentLabel="SignIn Modal"
       >
@@ -102,7 +98,7 @@ function SignIn() {
 
         <form>
           <div className="inputBox">
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input
               type="email"
               placeholder="Please enter your email"
@@ -110,10 +106,14 @@ function SignIn() {
               // onChange={handelEmail}
             />
             <div>
-              <label for="password">Password</label>
+              <label htmlFor="password">Password</label>
               <a className="forget">Forget Password?</a>
             </div>
-            <input type="password" id="password" placeholder="Please enter your password" />
+            <input
+              type="password"
+              id="password"
+              placeholder="Please enter your password"
+            />
             <div className="checkBox">
               <input type="checkbox" />
               <span>Keep me Sign Ip</span>
@@ -123,10 +123,6 @@ function SignIn() {
             <button onClick={handelLogIn}>Sign In</button>
           </div>
         </form>
-        {/* <div className="signUpBtn">
-          <span>Don't have an account?</span>
-          <button>Sign Up</button>
-        </div> */}
       </Modal>
     </div>
   );

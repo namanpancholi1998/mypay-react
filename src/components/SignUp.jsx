@@ -50,6 +50,7 @@ function SignUp() {
         onRequestClose={closeModal}
         style={customStyles}
         contentLabel="SignUp Modal"
+        ariaHideApp={false}
       >
         <div className="crossSymbol" onClick={closeModal}>
           &#10060;
@@ -61,12 +62,12 @@ function SignUp() {
 
         <form>
           <div className="inputBox">
-            <label for="name">Name</label>
+            <label htmlFor="name">Name</label>
             <input type="text" placeholder="Please enter your full name" />
-            <label for="email">Email</label>
+            <label htmlFor="email">Email</label>
             <input type="email" placeholder="Please enter your email" />
 
-            <label for="password">Password</label>
+            <label htmlFor="password">Password</label>
             <input type="password" placeholder="Please enter your password" />
           </div>
           <div className="signInBtn">

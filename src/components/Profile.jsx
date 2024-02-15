@@ -1,5 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
+import "../styles/Profile.css";
 
 const customStyles = {
   content: {
@@ -21,8 +22,9 @@ const customStyles = {
 };
 
 function Profile(props) {
-  console.log(props);
   let subtitle;
+  let balance;
+  let date = new Date(); 
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
   function openModal() {
@@ -41,7 +43,7 @@ function Profile(props) {
 
   return (
     <div>
-      <button onClick={openModal} className="">
+      <button onClick={openModal} className="MainSignInBtn">
         Profile
       </button>
       <Modal
@@ -55,9 +57,11 @@ function Profile(props) {
         <div className="crossSymbol" onClick={closeModal}>
           &#10060;
         </div>
-        <div className="heading">
+        <div className="profileModal">
           <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Profile</h2>
-          <p>Hello {props.userName}</p>
+          <p>Hello <span className="userName">{props.userName}</span></p>
+          <h3>Account Balance: <span>{balance}</span></h3>
+          <p>{date.toLocaleDateString()}</p>
         </div>
       </Modal>
     </div>
