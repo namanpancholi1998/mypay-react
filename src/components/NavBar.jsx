@@ -1,32 +1,36 @@
 import "../styles/NavBar.css";
-import SignIn from "./SignIn";
-import SignUp from "./SignUp";
-import Profile from "./Profile";
+import SignIn from "./Modals/SignIn";
+import SignUp from "./Modals/SignUp";
+import Profile from "./Modals/Profile";
 import { useCookies } from "react-cookie";
 
 function NavBar(props) {
-  const [cookies, setCookie] = useCookies(["token"]);
+  const [, setCookie] = useCookies(["token"]);
   function handleSignOut() {
     let tokenValue = "";
     setCookie("token", tokenValue, { path: "/" });
   }
 
-  const loggedOut = (
-    <div className="button-holder">
-      <SignIn></SignIn>
-      <SignUp></SignUp>
-    </div>
-  );
+  function LoggedOut() {
+    return (
+      <div className="button-holder">
+        <SignIn></SignIn>
+        <SignUp></SignUp>
+      </div>
+    );
+  }
 
-  const loggedIn = (
-    <div className="button-holder">
-      <Profile userName={props.userName} />
+  function LoggedIn() {
+    return (
+      <div className="button-holder">
+        <Profile userName={props.userName} />
 
-      <button onClick={handleSignOut} className="MainSignInBtn">
-        Sign Out
-      </button>
-    </div>
-  );
+        <button onClick={handleSignOut} className="MainSignInBtn">
+          Sign Out
+        </button>
+      </div>
+    );
+  }
 
   return (
     <section className="navBar">
@@ -42,7 +46,7 @@ function NavBar(props) {
           </ul>
         </nav>
       </div>
-      {props.isLoggedIn ? loggedIn : loggedOut}
+      {props.isLoggedIn ? <LoggedIn /> : <LoggedOut />}
     </section>
   );
 }

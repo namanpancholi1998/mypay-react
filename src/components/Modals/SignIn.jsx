@@ -1,4 +1,4 @@
-import "../styles/SignIn.css";
+import "../../styles/SignIn.css";
 import React from "react";
 import Modal from "react-modal";
 import { useCookies } from "react-cookie";

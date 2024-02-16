@@ -1,4 +1,4 @@
-import "../styles/SignUp.css";
+import "../../styles/SignUp.css";
 import { findByLabelText } from "@testing-library/react";
 import React from "react";
 import ReactDOM from "react-dom";

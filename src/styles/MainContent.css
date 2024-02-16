@@ -42,19 +42,23 @@
   margin: 5px 0;
 }
 
-.service {
+.service h3 {
+  display: inline;
   margin-left: 20px;
   margin-bottom: 20px;
 }
 
 .wraper {
   display: flex;
+  height: 100%;
 }
 
 .serviceButtonsContainer {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  width: 20%;
+  height: 50%;
 }
 
 .serviceButtons {
@@ -62,8 +66,18 @@
   justify-content: center;
   align-items: center;
   height: 80px;
-  width: 100px;
+  width: 200px;
   margin-left: 30px;
   color: white;
   background-color: #3fa3e0;
+}
+
+.serviceDisplay {
+  width: 75%;
+}
+
+/* Services Component Styles (Add, Send and Recharge) */
+.container {
+  display: flex;
+  flex-direction: column;
 }
