@@ -6,10 +6,10 @@
 }
 
 .heading {
-  margin: 20px 0;
+  margin: 10px 0;
 }
 
-.MainSignInBtn {
+.Btn-blue {
   padding: 10px;
   color: white;
   background-color: #3fa3e0;

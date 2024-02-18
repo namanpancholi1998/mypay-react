@@ -10,7 +10,7 @@ export default function MobileRecharge() {
         <option>Vi Prepaid</option>
       </select>
       <input type="number" placeholder="Amount" />
-      <button>Recharge</button>
+      <button className="Btn-blue">Recharge</button>
     </div>
   );
 }

@@ -6,15 +6,16 @@
 }
 
 .heading {
-  margin: 10px 0;
+  margin: 20px 0;
 }
 
-.MainSignUpBtn {
+.Btn-blue {
   padding: 10px;
   color: white;
   background-color: #3fa3e0;
   border: none;
   border-radius: 5px;
+  cursor: pointer;
 }
 
 .inputBox {

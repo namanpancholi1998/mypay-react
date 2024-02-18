@@ -1,8 +1,8 @@
-import "../../styles/SignIn.css";
+import "../../styles/SignInModal.css";
 import React from "react";
 import Modal from "react-modal";
 import { useCookies } from "react-cookie";
-// import { useState } from "react";
+import { useState } from "react";
 
 const customStyles = {
   content: {
@@ -34,18 +34,13 @@ const users = [
   },
 ];
 
-function SignIn() {
+function SignInModal({ users }) {
   const [cookies, setCookie] = useCookies(["token"]);
-  // const [email, setEmail] = useState();
-
-  // function handelEmail (e) {
-  //   setEmail(e.target.value);
-  // }
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
   function handelLogIn(e) {
     e.preventDefault();
-    const email = document.getElementById("email").value;
-    const password = document.getElementById("password").value;
     const isLogedIn =
       users.filter(
         (user) => user.userName === email && user.password === password
@@ -67,7 +62,6 @@ function SignIn() {
   }
 
   function afterOpenModal() {
-    // references are now sync'd and can be accessed.
     subtitle.style.color = "#f00";
     subtitle.style.margin = "0";
   }
@@ -78,7 +72,7 @@ function SignIn() {
 
   return (
     <div>
-      <button onClick={openModal} className="MainSignInBtn">
+      <button onClick={openModal} className="Btn-blue">
         Sign In
       </button>
       <Modal
@@ -103,7 +97,7 @@ function SignIn() {
               type="email"
               placeholder="Please enter your email"
               id="email"
-              // onChange={handelEmail}
+              onChange={(e) => setEmail(e.target.value)}
             />
             <div>
               <label htmlFor="password">Password</label>
@@ -113,6 +107,7 @@ function SignIn() {
               type="password"
               id="password"
               placeholder="Please enter your password"
+              onChange={(e) => setPassword(e.target.value)}
             />
             <div className="checkBox">
               <input type="checkbox" />
@@ -128,8 +123,37 @@ function SignIn() {
   );
 }
 
-export default SignIn;
+export default SignInModal;
 
 // https://www.npmjs.com/package/react-modal
 // https://www.seedr.cc
 // https://legacy.reactjs.org/docs/hooks-intro.html
+
+// Edited Sir se Puchna hai ??
+/*
+const userName = users.map((user) => user.name);
+    // const userExists = users.some(
+    //   (user) => user.name === email && user.password === password
+    // );
+
+    // if (userExists) {
+    //   console.log("User authenticated");
+    // } else {
+    //   console.log("User not found");
+    // }
+
+    const isLogedIn = users.some(
+      (user) => user.email === email && user.password === password
+    );
+
+    // users.filter(
+    //   (user) => user.userName === email && user.password === password
+    // ).length > 0;
+
+    if (isLogedIn) {
+      let tokenValue = `mypay-${userName}-mypay`;
+      setCookie("token", tokenValue, { path: "/" });
+    } else {
+      alert("Password galt hai");
+    }
+ */

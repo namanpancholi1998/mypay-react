@@ -1,11 +1,19 @@
+import React, { useState } from "react";
 import "../styles/NavBar.css";
-import SignIn from "./Modals/SignIn";
-import SignUp from "./Modals/SignUp";
-import Profile from "./Modals/Profile";
+import SignInModal from "./Modals/SignInModal";
+import SignUpModal from "./Modals/SignUpModal";
+import ProfileModal from "./Modals/ProfileModal";
 import { useCookies } from "react-cookie";
 
 function NavBar(props) {
   const [, setCookie] = useCookies(["token"]);
+  const [allUsers, setAllUsers] = useState([]);
+
+  const handleSignUp = (users) => {
+    console.log(users);
+    setAllUsers(users);
+  };
+
   function handleSignOut() {
     let tokenValue = "";
     setCookie("token", tokenValue, { path: "/" });
@@ -14,8 +22,8 @@ function NavBar(props) {
   function LoggedOut() {
     return (
       <div className="button-holder">
-        <SignIn></SignIn>
-        <SignUp></SignUp>
+        <SignInModal users={allUsers} />
+        <SignUpModal onSignUp={handleSignUp} />
       </div>
     );
   }
@@ -23,9 +31,9 @@ function NavBar(props) {
   function LoggedIn() {
     return (
       <div className="button-holder">
-        <Profile userName={props.userName} />
+        <ProfileModal userName={props.userName} />
 
-        <button onClick={handleSignOut} className="MainSignInBtn">
+        <button onClick={handleSignOut} className="Btn-blue">
           Sign Out
         </button>
       </div>

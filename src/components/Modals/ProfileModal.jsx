@@ -1,6 +1,6 @@
 import React from "react";
 import Modal from "react-modal";
-import "../../styles/Profile.css";
+import "../../styles/ProfileModal.css";
 
 const customStyles = {
   content: {
@@ -21,7 +21,7 @@ const customStyles = {
   },
 };
 
-function Profile(props) {
+function ProfileModal(props) {
   let subtitle;
   let balance;
   let date = new Date();
@@ -43,7 +43,7 @@ function Profile(props) {
 
   return (
     <div>
-      <button onClick={openModal} className="MainSignInBtn">
+      <button onClick={openModal} className="Btn-blue">
         Profile
       </button>
       <Modal
@@ -72,7 +72,7 @@ function Profile(props) {
   );
 }
 
-export default Profile;
+export default ProfileModal;
 
 // https://www.npmjs.com/package/react-modal
 // https://www.seedr.cc

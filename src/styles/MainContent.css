@@ -70,10 +70,15 @@
   margin-left: 30px;
   color: white;
   background-color: #3fa3e0;
+  cursor: pointer;
 }
 
 .serviceDisplay {
   width: 75%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #009dff42;
 }
 
 /* Services Component Styles (Add, Send and Recharge) */

@@ -1,7 +1,5 @@
-import "../../styles/SignUp.css";
-import { findByLabelText } from "@testing-library/react";
-import React from "react";
-import ReactDOM from "react-dom";
+import "../../styles/SignUpModal.css";
+import React, { useState } from "react";
 import Modal from "react-modal";
 
 const customStyles = {
@@ -22,10 +20,15 @@ const customStyles = {
   },
 };
 
-function SignUp() {
-  let subtitle;
-  const [modalIsOpen, setIsOpen] = React.useState(false);
+const newUSers = [];
 
+function SignUpModal() {
+  const [modalIsOpen, setIsOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  let subtitle;
   function openModal() {
     setIsOpen(true);
   }
@@ -41,7 +44,7 @@ function SignUp() {
 
   return (
     <div>
-      <button onClick={openModal} className="MainSignUpBtn">
+      <button onClick={openModal} className="Btn-blue">
         Sign Up
       </button>
       <Modal
@@ -63,12 +66,24 @@ function SignUp() {
         <form>
           <div className="inputBox">
             <label htmlFor="name">Name</label>
-            <input type="text" placeholder="Please enter your full name" />
+            <input
+              type="text"
+              placeholder="Please enter your full name"
+              onChange={(e) => setName(e.target.value)}
+            />
             <label htmlFor="email">Email</label>
-            <input type="email" placeholder="Please enter your email" />
+            <input
+              type="email"
+              placeholder="Please enter your email"
+              onChange={(e) => setEmail(e.target.value)}
+            />
 
             <label htmlFor="password">Password</label>
-            <input type="password" placeholder="Please enter your password" />
+            <input
+              type="password"
+              placeholder="Please enter your password"
+              onChange={(e) => setPassword(e.target.value)}
+            />
           </div>
           <div className="signInBtn">
             <button>Sign Up</button>
@@ -83,8 +98,22 @@ function SignUp() {
   );
 }
 
-export default SignUp;
+export default SignUpModal;
 
 // https://www.npmjs.com/package/react-modal
 // https://www.seedr.cc
 // https://legacy.reactjs.org/docs/hooks-intro.html
+// Edited sir se puchna hai ??
+/*
+const [name, setName] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [users, setUsers] = useState([]);
+
+  function handelSignUp() {
+    const newUser = { name, email, password };
+    setUsers([...users, newUser]);
+    onSignUp([...users, newUser]);
+  }
+
+*/

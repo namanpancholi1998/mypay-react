@@ -1,3 +1,4 @@
+import React, { useState } from "react";
 import "../styles/MainContent.css";
 import Logo from "../images/logo.svg";
 import BannerImage from "../images/1697527211984.avif";
@@ -6,6 +7,18 @@ import SendMoney from "./SendMoney";
 import MobileRecharge from "./Recharge";
 
 function MainContet(props) {
+  const [selectedService, setSelectedService] = useState("");
+  function displayService() {
+    if (selectedService === "AddMoney") {
+      return <AddMoney />;
+    } else if (selectedService === "SendMoney") {
+      return <SendMoney />;
+    } else if (selectedService === "Recharge") {
+      return <MobileRecharge />;
+    } else {
+      return <h2>Please Select Any service.</h2>;
+    }
+  }
   function LoggedInContent() {
     return (
       <div className="userContainer">
@@ -18,19 +31,26 @@ function MainContet(props) {
         </div>
         <div className="wraper">
           <div className="serviceButtonsContainer">
-            <div className="serviceButtons">Add Money</div>
-            <div className="serviceButtons">Send Money</div>
-            <div className="serviceButtons">Recharge</div>
+            <div
+              className="serviceButtons"
+              onClick={() => setSelectedService("AddMoney")}
+            >
+              Add Money
+            </div>
+            <div
+              className="serviceButtons"
+              onClick={() => setSelectedService("SendMoney")}
+            >
+              Send Money
+            </div>
+            <div
+              className="serviceButtons"
+              onClick={() => setSelectedService("Recharge")}
+            >
+              Recharge
+            </div>
           </div>
-          <div
-            style={{ textAlign: "center", backgroundColor: "red" }}
-            className="serviceDisplay"
-          >
-            <h2>Please Select Any service.</h2>
-            <AddMoney></AddMoney>
-            <SendMoney></SendMoney>
-            <MobileRecharge></MobileRecharge>
-          </div>
+          <div className="serviceDisplay">{displayService()}</div>
         </div>
       </div>
     );
