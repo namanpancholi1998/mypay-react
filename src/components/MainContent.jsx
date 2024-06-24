@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import "../styles/MainContent.css";
 import Logo from "../images/logo.svg";
 import BannerImage from "../images/1697527211984.avif";
-import AddMoney from "../components/AddMoney";
-import SendMoney from "./SendMoney";
-import MobileRecharge from "./Recharge";
+import AddMoney from "./Services/AddMoney";
+import SendMoney from "./Services/SendMoney";
+import MobileRecharge from "./Services/Recharge";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
-function MainContet(props) {
+function MainContent(props) {
   const [selectedService, setSelectedService] = useState("");
   function displayService() {
     if (selectedService === "AddMoney") {
@@ -22,14 +24,15 @@ function MainContet(props) {
   function LoggedInContent() {
     return (
       <div className="userContainer">
-        <div className="userGreatings">
+        <ToastContainer position="bottom-right" />
+        <div className="userGreetings">
           <h1>Hello {props.userName.toUpperCase()}</h1>
           <p>Welcome To MYPay Here You Can Use Our Services</p>
         </div>
         <div className="service">
           <h3>Services</h3>
         </div>
-        <div className="wraper">
+        <div className="wrapper">
           <div className="serviceButtonsContainer">
             <div
               className="serviceButtons"
@@ -83,4 +86,4 @@ function MainContet(props) {
   );
 }
 
-export default MainContet;
+export default MainContent;

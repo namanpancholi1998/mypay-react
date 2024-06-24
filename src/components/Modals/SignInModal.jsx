@@ -3,6 +3,8 @@ import React from "react";
 import Modal from "react-modal";
 import { useCookies } from "react-cookie";
 import { useState } from "react";
+import { encryptor } from "../../util/Encryptor";
+import { toast } from "react-toastify";
 
 const customStyles = {
   content: {
@@ -23,34 +25,33 @@ const customStyles = {
   },
 };
 
-const users = [
-  {
-    userName: "naman",
-    password: "12345",
-  },
-  {
-    userName: "admin",
-    password: "admin",
-  },
-];
-
 function SignInModal({ users }) {
-  const [cookies, setCookie] = useCookies(["token"]);
+  const [, setCookie] = useCookies(["token"]);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   function handelLogIn(e) {
     e.preventDefault();
-    const isLogedIn =
-      users.filter(
-        (user) => user.userName === email && user.password === password
-      ).length > 0;
+    let userName;
+    let loggedUsers;
+    if (users) {
+      loggedUsers = users.filter(
+        (user) => user.email === email && user.password === password
+      );
+    }
 
-    if (isLogedIn) {
-      let tokenValue = `mypay-${email}-mypay`;
+    if (loggedUsers.length > 0) {
+      userName = loggedUsers[0].name;
+    } else {
+      userName = "";
+    }
+
+    if (userName != "") {
+      let token = encryptor(userName);
+      let tokenValue = `mypay-${token}-mypay`;
       setCookie("token", tokenValue, { path: "/" });
     } else {
-      alert("Password galt hai");
+      toast.error("Please Enter Correct Email And Password");
     }
   }
 
@@ -132,23 +133,23 @@ export default SignInModal;
 // Edited Sir se Puchna hai ??
 /*
 const userName = users.map((user) => user.name);
-    // const userExists = users.some(
-    //   (user) => user.name === email && user.password === password
-    // );
+    const userExists = users.some(
+      (user) => user.name === email && user.password === password
+    );
 
-    // if (userExists) {
-    //   console.log("User authenticated");
-    // } else {
-    //   console.log("User not found");
-    // }
+    if (userExists) {
+      console.log("User authenticated");
+    } else {
+      console.log("User not found");
+    }
 
     const isLogedIn = users.some(
       (user) => user.email === email && user.password === password
     );
 
-    // users.filter(
-    //   (user) => user.userName === email && user.password === password
-    // ).length > 0;
+    users.filter(
+      (user) => user.userName === email && user.password === password
+    ).length > 0;
 
     if (isLogedIn) {
       let tokenValue = `mypay-${userName}-mypay`;

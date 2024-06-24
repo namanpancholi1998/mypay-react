@@ -31,13 +31,13 @@
   justify-content: center;
 }
 
-.userGreatings {
+.userGreetings {
   text-align: center;
   width: 100vw;
 }
 
-.userGreatings h1,
-.userGreatings p {
+.userGreetings h1,
+.userGreetings p {
   padding: 10px;
   margin: 5px 0;
 }
@@ -48,7 +48,7 @@
   margin-bottom: 20px;
 }
 
-.wraper {
+.wrapper {
   display: flex;
   height: 100%;
 }

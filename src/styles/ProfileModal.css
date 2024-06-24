@@ -1,3 +1,12 @@
+.Btn-blue-userProfile,
+.Btn-blue-userSignOut {
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  background-color: #3fa3e0;
+}
+
 .profileModal {
   display: flex;
   flex-direction: column;

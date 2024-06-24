@@ -42,6 +42,6 @@
 }
 .button-holder {
   display: flex;
-  justify-content: space-between;
-  width: 15%;
+  justify-content: space-evenly;
+  width: 11%;
 }

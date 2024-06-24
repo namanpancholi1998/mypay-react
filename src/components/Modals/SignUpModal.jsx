@@ -1,6 +1,7 @@
 import "../../styles/SignUpModal.css";
-import React, { useState } from "react";
+import React, { useCallback, useState } from "react";
 import Modal from "react-modal";
+import { Cookies, useCookies } from "react-cookie";
 
 const customStyles = {
   content: {
@@ -20,13 +21,28 @@ const customStyles = {
   },
 };
 
-const newUSers = [];
-
-function SignUpModal() {
+function SignUpModal({ onSignUp }) {
+  const [newUser, setNewUser] = useCookies();
   const [modalIsOpen, setIsOpen] = useState(false);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  // const [users, setUsers] = useState([]);
+  // console.log(newUser.users);
+
+  function handelSignUp() {
+    const existingUsers = newUser.users || []; // Initialize if undefined
+    const newUserObj = { name, email, password, balance: 1000 };
+
+    setNewUser("users", [...existingUsers, newUserObj]);
+    // console.log(newUser);
+    // onSignUp([...existingUsers, newUserObj]);
+
+    // const newUser = { name, email, password, balance: 1000 };
+    // newUser.users.push(setNewUser("users", newUser));
+    // setUsers([...users, newUser]);
+    // onSignUp([...newUser.users, newUser]);
+  }
 
   let subtitle;
   function openModal() {
@@ -86,7 +102,7 @@ function SignUpModal() {
             />
           </div>
           <div className="signInBtn">
-            <button>Sign Up</button>
+            <button onClick={handelSignUp}>Sign Up</button>
           </div>
         </form>
         {/* <div className="signUpBtn">

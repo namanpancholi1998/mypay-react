@@ -1,6 +1,9 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import Modal from "react-modal";
 import "../../styles/ProfileModal.css";
+import { FaRegUser } from "react-icons/fa";
+import { getProfile } from "../../util/CookieUtil.js";
+import { Cookies, useCookies } from "react-cookie";
 
 const customStyles = {
   content: {
@@ -21,9 +24,23 @@ const customStyles = {
   },
 };
 
-function ProfileModal(props) {
+function ProfileModal({ userName }) {
+  const [cookies, setCookie] = useCookies(["token"]);
+  const [localBalance, setLocalBalance] = useState("");
   let subtitle;
-  let balance;
+  let profile = getProfile(cookies);
+  console.log(profile);
+
+  useEffect(() => {
+    const storedBalance = localStorage.getItem("balance");
+    if (storedBalance) {
+      setLocalBalance(storedBalance);
+    } else {
+      setLocalBalance(profile.balance);
+      localStorage.setItem("balance", profile.balance);
+    }
+  }, []);
+
   let date = new Date();
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -43,8 +60,9 @@ function ProfileModal(props) {
 
   return (
     <div>
-      <button onClick={openModal} className="Btn-blue">
-        Profile
+      {}
+      <button onClick={openModal} className="Btn-blue-userProfile">
+        <FaRegUser style={{ color: "#ffffff", fontSize: "1.5em" }} />
       </button>
       <Modal
         isOpen={modalIsOpen}
@@ -60,10 +78,11 @@ function ProfileModal(props) {
         <div className="profileModal">
           <h2 ref={(_subtitle) => (subtitle = _subtitle)}>Profile</h2>
           <p>
-            Hello <span className="userName">{props.userName}</span>
+            Hello <span className="userName">{userName}</span>
           </p>
           <h3>
-            Account Balance: <span>{balance}</span>
+            Account Balance:{" "}
+            <span>{window.localStorage.getItem("balance")}</span>
           </h3>
           <p>{date.toLocaleDateString()}</p>
         </div>
